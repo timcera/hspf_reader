@@ -1,0 +1,14 @@
+include *.md
+include *.rst
+include *.txt
+include *.yaml
+include VERSION
+recursive-include docs *.bat
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+recursive-include tests *.csv
+recursive-include tests *.hbn
+recursive-include tests *.plt
+recursive-include tests *.py
+recursive-include tests *.wdm
