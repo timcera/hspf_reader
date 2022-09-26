@@ -38,7 +38,7 @@ def capture(func, *args, **kwds):
 
 class TestDescribe(TestCase):
     def setUp(self):
-        self.extract = b"""Datetime,GROUNDWATER,INTERFLOW,SURFACE,TOTAL OUTFLOW
+        extract = b"""Datetime,GROUNDWATER,INTERFLOW,SURFACE,TOTAL OUTFLOW
 1976-01-01 12:00:00,11.4047,0,0.0174039,11.4221
 1976-01-02 00:00:00,11.2878,0,0,11.2878
 1976-01-02 12:00:00,11.1592,0,0,11.1592
@@ -772,21 +772,24 @@ class TestDescribe(TestCase):
 1976-12-31 12:00:00,0.544854,0,7.45645e-06,0.544861
 1977-01-01 00:00:00,0.539381,0,0,0.539381
 """
-        self.extract_api = StringIO(self.extract.decode())
+        self.extract_api = StringIO(extract.decode())
+        self.extract_api = tsutils.asbestfreq(
+            pd.read_csv(self.extract_api, index_col=0, parse_dates=True, header=0)
+        )
 
     def test_plotgen_cli(self):
         args = "hspf_reader plotgen tests/data_plotgen.plt"
         args = shlex.split(args)
-        out = subprocess.Popen(
-            args, stdout=subprocess.PIPE, stdin=subprocess.PIPE
-        ).communicate()[0]
-        self.assertEqual(out, self.extract)
+        out = StringIO(
+            subprocess.Popen(args, stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+            .communicate()[0]
+            .decode()
+        )
+        out = tsutils.asbestfreq(
+            pd.read_csv(out, index_col=0, parse_dates=True, header=0)
+        )
+        assert_frame_equal(out, self.extract_api)
 
     def test_api(self):
-        out = plotgen(
-            "tests/data_plotgen.plt"
-        ).astype("float64")
-        otherout = tsutils.asbestfreq(
-            pd.read_csv(self.extract_api, header=0, index_col=0, parse_dates=True)
-        )
-        assert_frame_equal(out, otherout)
+        out = plotgen("tests/data_plotgen.plt").astype("float64")
+        assert_frame_equal(out, self.extract_api)

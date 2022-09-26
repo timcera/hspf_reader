@@ -13,9 +13,8 @@ try:
 except ImportError:
     from typing_extensions import Literal
 
-import pandas as pd
-import typic
 import cltoolbox
+import pandas as pd
 from cltoolbox.rst_text_formatter import RSTHelpFormatter
 from toolbox_utils import tsutils
 
@@ -502,7 +501,6 @@ def _extract_cli(
     )
 
 
-@typic.al
 def extract(
     hbnfilename: str,
     interval: Literal["yearly", "monthly", "daily", "bivl"],

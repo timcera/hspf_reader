@@ -102,9 +102,7 @@ class TestDescribe(TestCase):
         self.assertEqual(out, self.extract)
 
     def test_extract_one_label_labellist_api(self):
-        out = hbn(
-            "tests/data_yearly.hbn", "yearly", ["", 905, "", "AGWS"]
-        )
+        out = hbn("tests/data_yearly.hbn", "yearly", ["", 905, "", "AGWS"])
         otherout = tsutils.asbestfreq(
             pd.read_csv(self.extract_api, header=0, index_col=0, parse_dates=True)
         )

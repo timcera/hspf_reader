@@ -20,7 +20,6 @@ from unittest import TestCase
 
 from pandas.testing import assert_frame_equal
 from tstoolbox import tstoolbox
-
 from wdmtoolbox import wdmtoolbox
 from wdmtoolbox.wdmutil import DSNExistsError
 

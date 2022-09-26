@@ -6,15 +6,13 @@ import sys as _sys
 import warnings as _warnings
 
 import cltoolbox
+import pandas as pd
+from cltoolbox.rst_text_formatter import RSTHelpFormatter
 from toolbox_utils import tsutils
 
-from .functions.wdm import wdm as _wdm
 from .functions import hbn
 from .functions.plotgen import plotgen as _plotgen
-
-from cltoolbox.rst_text_formatter import RSTHelpFormatter
-
-import pandas as pd
+from .functions.wdm import wdm as _wdm
 
 _warnings.filterwarnings("ignore")
 
@@ -115,9 +113,7 @@ def _wdm_cli(start_date=None, end_date=None, *wdmpath):
     ${end_date}
 
     """
-    return tsutils._printiso(
-        wdm(*wdmpath, start_date=start_date, end_date=end_date)
-    )
+    return tsutils._printiso(wdm(*wdmpath, start_date=start_date, end_date=end_date))
 
 
 @tsutils.copy_doc(_wdm_cli)
