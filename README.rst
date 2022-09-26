@@ -13,8 +13,8 @@
     :target: https://pypi.python.org/pypi/hspf_reader
     :height: 20
 
-.. image:: http://img.shields.io/pypi/l/hspf_reader.svg
-    :alt: BSD-3 clause license
+.. image:: https://img.shields.io/badge/license-BSD--3--Clause-green
+    :alt: BSD-3-Clause
     :target: https://pypi.python.org/pypi/hspf_reader/
     :height: 20
 
