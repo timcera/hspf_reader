@@ -1,3 +1,9 @@
+## 0.1.6 (2022-09-27)
+
+### Fix
+
+- **wdm**: finally fixed recursion error and added correct tests for WDM files
+
 ## 0.1.5 (2022-09-27)
 
 ### Fix
