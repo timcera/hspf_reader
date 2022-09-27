@@ -506,7 +506,7 @@ def wdm(wdmfile, idsn):
                 dt_second,
             )
             series = pd.Series(values, index=dates_converted)
-            series.replace(dattr["TFILL"], pd.NA, inplace=True)
+            series[series == dattr["TFILL"]] = pd.NA
             series = series.dropna()
             try:
                 series.index.freq = str(tstep) + freq[tcode]
