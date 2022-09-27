@@ -505,11 +505,9 @@ def wdm(wdmfile, idsn):
                 dt_minute,
                 dt_second,
             )
-            series = (
-                pd.Series(values, index=dates_converted)
-                .replace(dattr["TFILL"], pd.NA)
-                .dropna()
-            )
+            series = pd.Series(values, index=dates_converted)
+            series = series.replace(dattr["TFILL"], pd.NA)
+            series = series.dropna()
             try:
                 series.index.freq = str(tstep) + freq[tcode]
             except ValueError:
