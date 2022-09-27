@@ -11,7 +11,8 @@ import datetime
 import numpy as np
 import pandas as pd
 
-# look up attributes NAME, data type (Integer; Real; String) and data length by attribute number
+# look up attributes NAME, data type (Integer; Real; String) and data length by
+# attribute number
 attrinfo = {
     1: ("TSTYPE", "S", 4),
     2: ("STAID", "S", 16),
@@ -114,7 +115,7 @@ def readWDM(wdmfile, hdffile, compress_output=False):
                     else:
                         dattr[name] = "".join(
                             [
-                                __inttostr(iarray[k])
+                                _inttostr(iarray[k])
                                 for k in range(ptr, ptr + length // 4)
                             ]
                         ).strip()
@@ -170,7 +171,8 @@ def readWDM(wdmfile, hdffile, compress_output=False):
             if len(records) == 0:
                 continue
 
-            # calculate number of data points in each group, tindex is final index for storage
+            # calculate number of data points in each group, tindex is final
+            # index for storage
             tgroup = dattr["TGROUP"]
             tstep = dattr["TSSTEP"]
             tcode = dattr["TCODE"]
@@ -266,8 +268,7 @@ def _bits_to_date(x):
 
 
 def _date_to_bits(year, month, day, hour, minute, second):
-    x = year << 26 | month << 22 | day << 17 | hour << 12 | minute << 6 | second
-    return x
+    return year << 26 | month << 22 | day << 17 | hour << 12 | minute << 6 | second
 
 
 def _increment_date(date, timecode, timestep):
@@ -331,8 +332,7 @@ def _is_leapyear(year):
         return False
     if year % 4 == 0:
         return True
-    else:
-        return False
+    return False
 
 
 def _date_convert(
@@ -356,8 +356,7 @@ def _process_groups(iarray, farray, records, offsets, tgroup):
     date_array = [0]  # need initialize with a type for numba
     value_array = [0.0]
 
-    for i in range(0, len(records)):
-        record = records[i]
+    for i, record in enumerate(records):
         offset = offsets[i]
         index = record * 512 + offset
         pscfwr = iarray[record * 512 + 3]  # should be 0 for last record in timeseries
@@ -482,7 +481,8 @@ def wdm(wdmfile, idsn):
             if len(records) == 0:
                 continue
 
-            # calculate number of data points in each group, tindex is final index for storage
+            # calculate number of data points in each group, tindex is final
+            # index for storage
             tgroup = dattr["TGROUP"]
             tstep = dattr["TSSTEP"]
             tcode = dattr["TCODE"]
@@ -505,9 +505,8 @@ def wdm(wdmfile, idsn):
                 dt_minute,
                 dt_second,
             )
-            series = pd.Series(values, index=dates_converted)
-            series[series == dattr["TFILL"]] = pd.NA
-            series = series.dropna()
+            series = pd.to_numeric(pd.Series(values, index=dates_converted))
+            series = series[series != dattr["TFILL"]]
             try:
                 series.index.freq = str(tstep) + freq[tcode]
             except ValueError:
