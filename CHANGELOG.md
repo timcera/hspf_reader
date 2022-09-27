@@ -1,3 +1,9 @@
+## 0.1.5 (2022-09-27)
+
+### Fix
+
+- another try to prevent the RecursionError on github python 3.8+
+
 ## 0.1.4 (2022-09-26)
 
 ### Fix
