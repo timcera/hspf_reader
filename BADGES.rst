@@ -10,11 +10,11 @@
 
 .. image:: https://img.shields.io/pypi/v/hspf_reader.svg
     :alt: Latest release
-    :target: https://pypi.python.org/pypi/hspf_reader
+    :target: https://pypi.python.org/pypi/hspf_reader/
     :height: 20
 
-.. image:: https://img.shields.io/badge/license-BSD--3--Clause-green
-    :alt: BSD-3-Clause
+.. image:: http://img.shields.io/pypi/l/hspf_reader.svg
+    :alt: BSD-3 clause license
     :target: https://pypi.python.org/pypi/hspf_reader/
     :height: 20
 

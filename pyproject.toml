@@ -3,7 +3,6 @@ name = "hspf_reader"
 dynamic = ["version"]
 readme = "README.rst"
 description = "Command line script and Python library to manipulate time series."
-requires-python = ">=3.7.1"
 dependencies = [
     "cltoolbox >= 1.3.0, < 2.0.0",
     "typing-extensions",
@@ -11,7 +10,7 @@ dependencies = [
     "numpy",
     "pandas",
     ]
-license = {file = "LICENSE.txt"}
+license = {text = "BSD-3-Clause"}
 authors = [
     {name = "Tim Cera", email = "tim@cerazone.net"}
     ]
@@ -74,9 +73,11 @@ github = "https://github.com/timcera/hspf_reader"
 bitbucket = "https://bitbucket.org/timcera/hspf_reader/src/main/"
 
 [tool.setuptools]
+license-files = ["LICENSE.txt"]
 include-package-data = true
 
 [tool.setuptools.dynamic]
+readme = {file = "README.rst"}
 version = {file = "VERSION"}
 
 [tool.setuptools.packages.find]
