@@ -23,7 +23,6 @@ except:
 from unittest import TestCase
 
 from pandas.testing import assert_frame_equal
-from tstoolbox import tstoolbox
 
 from hspf_reader import wdm
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# tstoolbox documentation build configuration file, created by
+# hspf_reader documentation build configuration file, created by
 # sphinx-quickstart on Wed Nov  6 14:04:36 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -53,8 +53,8 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "tstoolbox"
-copyright = "2013, Tim Cera, P.E."
+project = "hspf_reader"
+copyright = "2022, Tim Cera, P.E."
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -177,7 +177,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "tstoolboxdoc"
+htmlhelp_basename = "hspf_readerdoc"
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -194,7 +194,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("index", "tstoolbox.tex", "tstoolbox Documentation", "Tim Cera, P.E.", "manual")
+    ("index", "hspf_reader.tex", "hspf_reader Documentation", "Tim Cera, P.E.", "manual")
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -222,7 +222,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("index", "tstoolbox", "tstoolbox Documentation", ["Tim Cera, P.E."], 1)]
+man_pages = [("index", "hspf_reader", "hspf_reader Documentation", ["Tim Cera, P.E."], 1)]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -236,10 +236,10 @@ man_pages = [("index", "tstoolbox", "tstoolbox Documentation", ["Tim Cera, P.E."
 texinfo_documents = [
     (
         "index",
-        "tstoolbox",
-        "tstoolbox Documentation",
+        "hspf_reader",
+        "hspf_reader Documentation",
         "Tim Cera, P.E.",
-        "tstoolbox",
+        "hspf_reader",
         "One line description of project.",
         "Miscellaneous",
     )
@@ -258,10 +258,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = "tstoolbox"
+epub_title = "hspf_reader"
 epub_author = "Tim Cera, P.E."
 epub_publisher = "Tim Cera, P.E."
-epub_copyright = "2013, Tim Cera, P.E."
+epub_copyright = "2022, Tim Cera, P.E."
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
