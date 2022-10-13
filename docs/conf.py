@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # hspf_reader documentation build configuration file, created by
 # sphinx-quickstart on Wed Nov  6 14:04:36 2013.
@@ -194,7 +193,13 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("index", "hspf_reader.tex", "hspf_reader Documentation", "Tim Cera, P.E.", "manual")
+    (
+        "index",
+        "hspf_reader.tex",
+        "hspf_reader Documentation",
+        "Tim Cera, P.E.",
+        "manual",
+    )
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -222,7 +227,9 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("index", "hspf_reader", "hspf_reader Documentation", ["Tim Cera, P.E."], 1)]
+man_pages = [
+    ("index", "hspf_reader", "hspf_reader Documentation", ["Tim Cera, P.E."], 1)
+]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False

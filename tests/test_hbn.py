@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 catalog
 ----------------------------------
@@ -15,14 +13,11 @@ from unittest import TestCase
 from pandas.testing import assert_frame_equal
 from toolbox_utils import tsutils
 
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+from io import StringIO, BytesIO
 
 import pandas as pd
 
-from hspf_reader import hbn
+from hspf_reader.hspf_reader import hbn
 
 
 def capture(func, *args, **kwds):
@@ -91,28 +86,24 @@ class TestDescribe(TestCase):
 1999,1.40244
 2000,0.0191165
 """
-        self.extract_api = StringIO(self.extract.decode())
+        self.extract = tsutils.asbestfreq(
+            pd.read_csv(BytesIO(self.extract), header=0, index_col=0, parse_dates=True)
+        )
+        self.extract.index = self.extract.index.to_period()
 
     def test_extract_one_label_cli(self):
         args = "hspf_reader hbn tests/data_yearly.hbn yearly ,905,,AGWS"
         args = shlex.split(args)
-        out = subprocess.Popen(
+        out = pd.read_csv(BytesIO(subprocess.Popen(
             args, stdout=subprocess.PIPE, stdin=subprocess.PIPE
-        ).communicate()[0]
-        self.assertEqual(out, self.extract)
+        ).communicate()[0]), header=0, index_col=0, parse_dates=True)
+        out.index = out.index.to_period()
+        assert_frame_equal(out, self.extract, check_dtype=False)
 
     def test_extract_one_label_labellist_api(self):
         out = hbn("tests/data_yearly.hbn", "yearly", ["", 905, "", "AGWS"])
-        otherout = tsutils.asbestfreq(
-            pd.read_csv(self.extract_api, header=0, index_col=0, parse_dates=True)
-        )
-        otherout.index = otherout.index.to_period()
-        assert_frame_equal(out, otherout)
+        assert_frame_equal(out, self.extract, check_dtype=False)
 
     def test_extract_one_label_labelstr_api(self):
         out = hbn("tests/data_yearly.hbn", "yearly", ",905,,AGWS")
-        otherout = tsutils.asbestfreq(
-            pd.read_csv(self.extract_api, header=0, index_col=0, parse_dates=True)
-        )
-        otherout.index = otherout.index.to_period()
-        assert_frame_equal(out, otherout)
+        assert_frame_equal(out, self.extract, check_dtype=False)

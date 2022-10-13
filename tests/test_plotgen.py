@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 catalog
 ----------------------------------
@@ -22,7 +20,7 @@ except ImportError:
 
 import pandas as pd
 
-from hspf_reader import plotgen
+from hspf_reader.hspf_reader import plotgen
 
 
 def capture(func, *args, **kwds):
