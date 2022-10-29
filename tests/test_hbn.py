@@ -8,14 +8,12 @@ Tests for `hspf_reader hbn` module.
 import shlex
 import subprocess
 import sys
+from io import BytesIO, StringIO
 from unittest import TestCase
 
+import pandas as pd
 from pandas.testing import assert_frame_equal
 from toolbox_utils import tsutils
-
-from io import StringIO, BytesIO
-
-import pandas as pd
 
 from hspf_reader.hspf_reader import hbn
 
@@ -94,9 +92,16 @@ class TestDescribe(TestCase):
     def test_extract_one_label_cli(self):
         args = "hspf_reader hbn tests/data_yearly.hbn yearly ,905,,AGWS"
         args = shlex.split(args)
-        out = pd.read_csv(BytesIO(subprocess.Popen(
-            args, stdout=subprocess.PIPE, stdin=subprocess.PIPE
-        ).communicate()[0]), header=0, index_col=0, parse_dates=True)
+        out = pd.read_csv(
+            BytesIO(
+                subprocess.Popen(
+                    args, stdout=subprocess.PIPE, stdin=subprocess.PIPE
+                ).communicate()[0]
+            ),
+            header=0,
+            index_col=0,
+            parse_dates=True,
+        )
         out.index = out.index.to_period()
         assert_frame_equal(out, self.extract, check_dtype=False)
 
