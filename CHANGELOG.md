@@ -1,3 +1,10 @@
+## 1.0.0 (2022-10-29)
+
+### Fix
+
+- finished the removal of typical
+- moved reading functionality to toolbox_utils to make available to other toolboxes
+
 ## 0.1.8 (2022-09-28)
 
 ## 0.1.7 (2022-09-28)
