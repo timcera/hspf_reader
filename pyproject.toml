@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 name = "hspf_reader"
 dynamic = ["version"]
 readme = "README.rst"
-description = "Command line script and Python library to manipulate time series."
+description = "Command line script and Python library to read HSPF WDM, binary, and plotgen time series."
 dependencies = [
     "cltoolbox >= 1.3.0, < 2.0.0",
     "typing-extensions",
@@ -109,3 +109,6 @@ version = {file = "VERSION"}
 [tool.setuptools.packages.find]
 where = ["src"]
 exclude = ["examples*", "tools*", "docs*", "hspf_reader.tests*"]
+
+[tool.isort]
+profile = "black"

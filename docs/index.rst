@@ -1,14 +1,14 @@
 .. include:: ../BADGES.rst
 
-.. _tstoolbox_documentation:
+.. _hspf_reader_documentation:
 
-tstoolbox
-=========
+hspf_reader
+===========
 
-This is the home page for tstoolbox.  tstoolbox is a command line program and
-Python library to work with time-series.
+This is the home page for hspf_reader.  hspf_reader is a command line program
+and Python library to work with HSPF time-series.
 
-tstoolbox should work with Python 3.6+.
+hspf_reader should work with Python 3.7+.
 
 Table of Contents
 -----------------
@@ -16,7 +16,6 @@ Table of Contents
    :maxdepth: 2
 
    readme
-   notebooks
    command_line
    function_summary
    contributing
