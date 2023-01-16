@@ -1,6 +1,7 @@
 [build-system]
 requires = [
-    "setuptools",
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.2",
     "wheel",
     "oldest-supported-numpy",
 ]
@@ -95,6 +96,9 @@ tag_format = "$version"
 version_files = ["VERSION"]
 update_changelog_on_bump = true
 
+[tool.isort]
+profile = "black"
+
 [tool.jupytext]
 formats = "ipynb,py:percent"
 
@@ -110,5 +114,4 @@ version = {file = "VERSION"}
 where = ["src"]
 exclude = ["examples*", "tools*", "docs*", "hspf_reader.tests*"]
 
-[tool.isort]
-profile = "black"
+[tool.setuptools_scm]
