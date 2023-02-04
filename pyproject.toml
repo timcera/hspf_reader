@@ -13,9 +13,9 @@ dynamic = ["version"]
 readme = "README.rst"
 description = "Command line script and Python library to read HSPF WDM, binary, and plotgen time series."
 dependencies = [
-    "cltoolbox >= 1.3.0, < 2.0.0",
+    "cltoolbox >= 2.0.0, < 3.0.0",
     "typing-extensions",
-    "toolbox_utils >= 1.0.0, < 2.0.0",
+    "toolbox_utils >= 2.0.0, < 3.0.0",
     "numpy",
     "pandas",
     ]
