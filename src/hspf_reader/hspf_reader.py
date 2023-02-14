@@ -27,7 +27,7 @@ def _plotgen_cli(start_date=None, end_date=None, *plotgen_args):
 
     Parameters
     ----------
-    plotgen_args : str
+    *plotgen_args : str
         Path and plotgen file name
         followed by space separated list of
         fields. For example::
@@ -38,7 +38,9 @@ def _plotgen_cli(start_date=None, end_date=None, *plotgen_args):
             `file.plt` can be space separated sets of 'plotgetpath,field'.
 
             'file.plt,FIELD1 file2.plt,FIELD2 file.plt,FIELD3'
+
     ${start_date}
+
     ${end_date}
 
     """
@@ -96,7 +98,7 @@ def _wdm_cli(start_date=None, end_date=None, *wdmpath):
 
     Parameters
     ----------
-    wdmpath : str
+    *wdmpath : str
         Path and WDM file name
         followed by space separated list of
         DSNs. For example::
@@ -107,7 +109,9 @@ def _wdm_cli(start_date=None, end_date=None, *wdmpath):
             `wdmpath` can be space separated sets of 'wdmpath,dsn'.
 
             'file.wdm,101 file2.wdm,104 file.wdm,227'
+
     ${start_date}
+
     ${end_date}
 
     """
@@ -162,16 +166,17 @@ def _hbn_cli(
 
     Parameters
     ----------
-    hbnfilename: str
+    hbnfilename : str
         The HSPF binary output file.  This file must have been created from
         a completed model run.
-    interval: str
+
+    interval : str
         One of 'yearly', 'monthly', 'daily', or 'bivl'.  The 'bivl' option is
         a sub-daily interval defined in the UCI file.  Typically 'bivl' is used
         for hourly output, but can be set to any value that evenly divides into
         a day.
 
-    labels: str
+    *labels : str
         The remaining arguments uniquely identify a time-series in the
         binary file.  The format is 'OPERATIONTYPE,ID,VARIABLEGROUP,VARIABLE'.
 
@@ -237,7 +242,9 @@ def _hbn_cli(
         all Groups in the Catalog are available in the unnamed (blank) Group.
 
     ${start_date}
+
     ${end_date}
+
     sort_columns:
         [optional, default is False]
 

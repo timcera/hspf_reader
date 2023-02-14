@@ -5,9 +5,7 @@ test_wdm
 Tests for `hspf_reader` module.
 """
 
-import os
 import sys
-import tempfile
 
 import pandas as pd
 from toolbox_utils import tsutils
