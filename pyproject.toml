@@ -1,11 +1,11 @@
 [build-system]
+build-backend = "setuptools.build_meta"
 requires = [
     "setuptools>=45",
     "setuptools_scm[toml]>=6.2",
     "wheel",
-    "oldest-supported-numpy",
+    "oldest-supported-numpy"
 ]
-build-backend = "setuptools.build_meta"
 
 [project]
 name = "hspf_reader"
@@ -15,14 +15,13 @@ description = "Command line script and Python library to read HSPF WDM, binary, 
 dependencies = [
     "cltoolbox >= 2.0.0, < 3.0.0",
     "typing-extensions",
-    "toolbox_utils >= 2.0.0, < 3.0.0",
+    "toolbox_utils >= 3.0.0, < 4.0.0",
     "numpy",
-    "pandas",
-    ]
-license = {text = "BSD-3-Clause"}
+    "pandas"
+]
 authors = [
     {name = "Tim Cera", email = "tim@cerazone.net"}
-    ]
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
@@ -32,46 +31,57 @@ classifiers = [
     "License :: OSI Approved :: BSD License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Scientific/Engineering",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-    ]
-keywords = ["time-series",
-            "hspf",
-            "simulation",
-            "hydrology",
-            "hydrologic",
-            "python",
-            "cli",
-            "command line",
-            "script",
-            "cli-application",
-            ]
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+keywords = [
+    "time-series",
+    "hspf",
+    "simulation",
+    "hydrology",
+    "hydrologic",
+    "python",
+    "cli",
+    "command line",
+    "script",
+    "cli-application"
+]
+license = {text = "BSD-3-Clause"}
+requires-python = ">=3.8"
 
 [project.optional-dependencies]
 dev = [
+    "bandit",
     "black",
+    "blacken-docs",
+    "black-nbconvert",
     "cleanpy",
-    "twine",
+    "commitizen",
+    "coverage[toml]",
+    "isort",
+    "mypy",
+    "pre-commit",
+    "pyflakes",
+    "pylama",
+    "pyle",
+    "pylint",
+    "pyre",
+    "pyroma",
     "pytest",
-    "coverage",
-    "flake8",
     "pytest-cov",
     "pytest-mpl",
-    "pre-commit",
-    "black-nbconvert",
-    "blacken-docs",
-    "velin",
-    "isort",
-    "pyroma",
     "pyupgrade",
-    "commitizen",
-    "functiontrace",
-    ]
+    "twine",
+    "unimport",
+    "velin",
+    "vulture"
+]
 
 [project.scripts]
 hspf_reader = "hspf_reader.hspf_reader:main"
@@ -81,20 +91,20 @@ documentation = "https://timcera.bitbucket.io/hspf_reader/docs/index.html#hspf_r
 github = "https://github.com/timcera/hspf_reader"
 bitbucket = "https://bitbucket.org/timcera/hspf_reader/src/main/"
 
-[tool]
-
 [tool.check-manifest]
-ignore = ["docs/_function_autosummary/*",
-          ".coverage",
-          ".deepsource.toml",
-          ".ipynb_checkpoints/*"]
+ignore = [
+    "docs/_function_autosummary/*",
+    ".coverage",
+    ".deepsource.toml",
+    ".ipynb_checkpoints/*"
+]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "1.0.2"
-tag_format = "$version"
-version_files = ["VERSION"]
+tag_format = "v$version"
 update_changelog_on_bump = true
+version = "1.0.2"
+version_files = ["VERSION"]
 
 [tool.isort]
 profile = "black"
@@ -111,7 +121,7 @@ readme = {file = "README.rst"}
 version = {file = "VERSION"}
 
 [tool.setuptools.packages.find]
-where = ["src"]
 exclude = ["examples*", "tools*", "docs*", "hspf_reader.tests*"]
+where = ["src"]
 
 [tool.setuptools_scm]
