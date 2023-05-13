@@ -29,7 +29,7 @@ def hbn(hbnpath, interval, *labels, **kwds):
         for hourly output, but can be set to any value that evenly divides into
         a day and needs to match the BIVL setting in the model run.
 
-    labels : str
+    *labels : str
         The remaining arguments uniquely identify a time-series in the
         binary file.  The format is 'OPERATIONTYPE,ID,VARIABLEGROUP,VARIABLE'.
 
@@ -141,7 +141,7 @@ def plotgen(*plotgen_args, **kwds):
 
     Parameters
     ----------
-    plotgen_args : str
+    *plotgen_args : str
         Path and plotgen file name
         followed by space separated list of
         fields. For example::
@@ -204,7 +204,7 @@ def wdm(*wdmpath, **kwds):
 
     Parameters
     ----------
-    wdmpath : str
+    *wdmpath : str
         Path and WDM file name
         followed by space separated list of
         DSNs. For example::
