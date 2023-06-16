@@ -1,3 +1,9 @@
+## v1.0.4 (2023-06-16)
+
+### Fix
+
+- isolated command line functions so not imported by other packages
+
 ## v1.0.3 (2023-02-14)
 
 ### Refactor
