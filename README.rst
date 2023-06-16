@@ -39,7 +39,17 @@ Use "hspfbintoolbox" to catalog and read HSPF binary output files.
 
 Installation
 ------------
-Should be as easy as running ``pip install hspf_reader`` at any command line.
+pip
+~~~
+.. code-block:: bash
+
+    pip install hspf_reader
+
+conda
+~~~~~
+.. code-block:: bash
+
+    conda install -c conda-forge hspf_reader
 
 Usage - Command Line
 --------------------

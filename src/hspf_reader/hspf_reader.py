@@ -19,80 +19,83 @@ def hbn(hbnpath, interval, *labels, **kwds):
 
     Parameters
     ----------
-    hbnfilename : str
+    hbnpath : str
         The HSPF binary output file.  This file must have been created from
         a completed model run.
 
     interval : str
-        One of 'yearly', 'monthly', 'daily', or 'bivl'.  The 'bivl' option is
-        a sub-daily interval defined in the UCI file.  Typically 'bivl' is used
-        for hourly output, but can be set to any value that evenly divides into
-        a day and needs to match the BIVL setting in the model run.
+        One of 'yearly', 'monthly', 'daily', or 'bivl'.  The 'bivl' option
+        is a sub-daily interval defined in the UCI file.  Typically 'bivl'
+        is used for hourly output, but can be set to any value that evenly
+        divides into a day and needs to match the BIVL setting in the model
+        run.
 
-    *labels : str
+    labels : str
         The remaining arguments uniquely identify a time-series in the
-        binary file.  The format is 'OPERATIONTYPE,ID,VARIABLEGROUP,VARIABLE'.
+        binary file.  The format is
+        'OPERATIONTYPE,ID,VARIABLEGROUP,VARIABLE'.
 
         For example: 'PERLND,101,PWATER,UZS IMPLND,101,IWATER,RETS'
 
         Leaving a section without an entry will wild card that
         specification.  To get all the PWATER variables for PERLND 101 the
-        label would read:
+        label would use::
 
-        'PERLND,101,PWATER,'
+            PERLND,101,PWATER,
 
-        To get TAET for all PERLNDs:
+        To get TAET for all PERLNDs::
 
-        'PERLND,,,TAET'
+            PERLND,,,TAET
 
-        Note that there are spaces ONLY between label specifications not within
-        the labels themselves.
+        Note that there are spaces ONLY between label specifications not
+        within the labels themselves.
 
-        OPERATIONTYPE can be PERLND, IMPLND, RCHRES, and BMPRAC.
+        +-----------------------+-------------------------------+
+        | OPERATIONTYPE         | VARIABLEGROUP                 |
+        +=======================+===============================+
+        | PERLND                | ATEMP, SNOW, PWATER, SEDMNT,  |
+        |                       | PSTEMP, PWTGAS, PQUAL,        |
+        |                       | MSTLAY, PEST, NITR, PHOS,     |
+        |                       | TRACER                        |
+        +-----------------------+-------------------------------+
+        | IMPLND                | ATEMP, SNOW, IWATER, SOLIDS,  |
+        |                       | IWTGAS, IQUAL                 |
+        +-----------------------+-------------------------------+
+        | RCHRES                | HYDR, CONS, HTRCH, SEDTRN,    |
+        |                       | GQUAL, OXRX, NUTRX, PLANK,    |
+        |                       | PHCARB, INFLOW, OFLOW, ROFLOW |
+        +-----------------------+-------------------------------+
+        | BMPRAC                | Not used Have to leave        |
+        |                       | VARIABLEGROUP as a wild card. |
+        |                       | For example,                  |
+        |                       | 'BMPRAC,875,,RMVOL'           |
+        +-----------------------+-------------------------------+
+
+        The Time Series Catalog in the HSPF Manual lists all of the
+        variables in each of these VARIABLEGROUPs.  For BMPRAC, all of the
+        variables in all Groups in the Catalog are available in the unnamed
+        (blank) Group.
 
         ID is the operation type identification number specified in the UCI
-        file. These numbers must be in the range 1-999.
+        file.
 
-        Here, the user can specify
+        Here, the user can specify:
 
-            - a single ID number to match
-            - no entry, matching any operation ID number
-            - a range, specified as any combination of simple integers and
-              groups of integers marked as "start:end", with multiple allowed
-              sub-ranges separated by the "+" sign.
+        - a single ID number to match (1-999)
+        - no entry, matching all ID's in the hbn file
+        - a range, specified as any combination of integers and
+          groups of integers marked as "start:end", with multiple
+          allowed sub-ranges separated by the "+" sign.
 
-        Examples:
-
-            +-----------------------+-------------------------------+
-            | Label ID              | Expands to:                   |
-            +=======================+===============================+
-            | 1:10                  | 1,2,3,4,5,6,7,8,9,10          |
-            +-----------------------+-------------------------------+
-            | 101:119+221:239       | 101,102..119,221,221,...239   |
-            +-----------------------+-------------------------------+
-            | 3:5+7                 | 3,4,5,7                       |
-            +-----------------------+-------------------------------+
-
-        VARIABLEGROUP depends on OPERATIONTYPE where::
-
-            if OPERATIONTYPE is PERLND then VARIABLEGROUP can be one of
-                'ATEMP', 'SNOW', 'PWATER', 'SEDMNT', 'PSTEMP', 'PWTGAS',
-                'PQUAL', 'MSTLAY', 'PEST', 'NITR', 'PHOS', 'TRACER'
-
-            if OPERATIONTYPE is IMPLND then VARIABLEGROUP can be one of
-                'ATEMP', 'SNOW', 'IWATER', 'SOLIDS', 'IWTGAS', 'IQUAL'
-
-            if OPERATIONTYPE is RCHRES then VARIABLEGROUP can be one of
-                'HYDR', 'CONS', 'HTRCH', 'SEDTRN', 'GQUAL', 'OXRX', 'NUTRX',
-                'PLANK', 'PHCARB', 'INFLOW', 'OFLOW', 'ROFLOW'
-
-            if OPERATIONTYPE is BMPRAC then VARIABLEGROUP is not used and you
-            have to leave VARIABLEGROUP as a wild card.  For example,
-            'BMPRAC,875,,RMVOL'.
-
-        The Time Series Catalog in the HSPF Manual lists all of the variables
-        in each of these VARIABLEGROUPs.  For BMPRAC, all of the variables in
-        all Groups in the Catalog are available in the unnamed (blank) Group.
+        +------------------+-------------------------+
+        | Example Label ID | Expands to:             |
+        +==================+=========================+
+        | 1:10             | 1,2,3,4,5,6,7,8,9,10    |
+        +------------------+-------------------------+
+        | 11:14+19:22      | 11,12,13,14,19,20,21,22 |
+        +------------------+-------------------------+
+        | 3:5+7            | 3,4,5,7                 |
+        +------------------+-------------------------+
 
     ${start_date}
 
@@ -101,8 +104,9 @@ def hbn(hbnpath, interval, *labels, **kwds):
     sort_columns:
         [optional, default is False]
 
-        If set to False will maintain the columns order of the labels.  If set
-        to True will sort all columns by their columns names."""
+        If set to False will maintain the columns order of the labels.  If
+        set to True will sort all columns by their columns names.
+    """
     try:
         start_date = kwds.pop("start_date")
     except KeyError:
@@ -141,7 +145,7 @@ def plotgen(*plotgen_args, **kwds):
 
     Parameters
     ----------
-    *plotgen_args : str
+    plotgen_args : str
         Path and plotgen file name
         followed by space separated list of
         fields. For example::
@@ -149,7 +153,7 @@ def plotgen(*plotgen_args, **kwds):
             'file.plt 234 345 456'
 
             OR
-            `file.plt` can be space separated sets of 'plotgetpath,field'.
+            `file.plt` can be space separated sets of 'plotgenpath,field'.
 
             'file.plt,FIELD1 file2.plt,FIELD2 file.plt,FIELD3'
 
@@ -204,7 +208,7 @@ def wdm(*wdmpath, **kwds):
 
     Parameters
     ----------
-    *wdmpath : str
+    wdmpath : str
         Path and WDM file name
         followed by space separated list of
         DSNs. For example::
@@ -269,7 +273,7 @@ def main():
     @cltoolbox.command("hbn", formatter_class=RSTHelpFormatter)
     @tsutils.copy_doc(hbn)
     def _hbn_cli(
-        hbnfilename,
+        hbnpath,
         interval,
         start_date=None,
         end_date=None,
@@ -279,7 +283,7 @@ def main():
         """docstring replaced by tsutils.copy_doc"""
         tsutils.printiso(
             hbn(
-                hbnfilename,
+                hbnpath,
                 interval,
                 *labels,
                 start_date=start_date,
