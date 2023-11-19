@@ -121,7 +121,7 @@ readme = {file = "README.rst"}
 version = {file = "VERSION"}
 
 [tool.setuptools.packages.find]
-exclude = ["examples*", "tools*", "docs*", "hspf_reader.tests*"]
+exclude = ["tests*", "examples*", "tools*", "docs*", "hspf_reader.tests*"]
 where = ["src"]
 
 [tool.setuptools_scm]

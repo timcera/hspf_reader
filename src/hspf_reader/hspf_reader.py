@@ -119,7 +119,7 @@ def hbn(hbnpath, interval, *labels, **kwds):
         sort_columns = kwds.pop("sort_columns")
     except KeyError:
         sort_columns = False
-    if len(kwds) > 0:
+    if kwds:
         raise ValueError(
             tsutils.error_wrapper(
                 f"""
@@ -171,7 +171,7 @@ def plotgen(*plotgen_args, **kwds):
         end_date = kwds.pop("end_date")
     except KeyError:
         end_date = None
-    if len(kwds) > 0:
+    if kwds:
         raise ValueError(
             tsutils.error_wrapper(
                 f"""
@@ -234,7 +234,7 @@ def wdm(*wdmpath, **kwds):
         end_date = kwds.pop("end_date")
     except KeyError:
         end_date = None
-    if len(kwds) > 0:
+    if kwds:
         raise ValueError(
             tsutils.error_wrapper(
                 f"""
