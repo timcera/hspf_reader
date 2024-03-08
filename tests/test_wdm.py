@@ -5,7 +5,6 @@ test_wdm
 Tests for `hspf_reader` module.
 """
 
-
 import sys
 
 import pandas as pd
