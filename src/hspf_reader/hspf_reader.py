@@ -13,6 +13,11 @@ from toolbox_utils.readers.wdm import wdm_extract as _wdm
 _warnings.filterwarnings("ignore")
 
 
+def about():
+    """Display version number and system information."""
+    return tsutils.about("hspf_reader")
+
+
 @tsutils.doc(tsutils.docstrings)
 def hbn(hbnpath, interval, *labels, **kwds):
     r"""Prints out data to the screen from a HSPF binary output file.
@@ -270,6 +275,13 @@ def main():
     if not _os_path.exists("debug_hspf_reader"):
         _sys.tracebacklimit = 0
 
+    @cltoolbox.command("about")
+    def _about_cli():
+        """Display version number and system information."""
+        about_dict = about()
+        for key in about_dict:
+            print(f"{key}: {about_dict[key]}")
+
     @cltoolbox.command("hbn", formatter_class=RSTHelpFormatter)
     @tsutils.copy_doc(hbn)
     def _hbn_cli(
@@ -305,11 +317,6 @@ def main():
     def _wdm_cli(start_date=None, end_date=None, *wdmpath):
         """docstring replaced by tsutils.copy_doc"""
         tsutils.printiso(wdm(*wdmpath, start_date=start_date, end_date=end_date))
-
-    @cltoolbox.command()
-    def about():
-        """Display version number and system information."""
-        tsutils.about(__name__)
 
     cltoolbox.main()
 
