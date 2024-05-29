@@ -15,7 +15,6 @@ description = "Command line script and Python library to read HSPF WDM, binary, 
 dependencies = [
     "cltoolbox >= 2.0.0, < 3.0.0",
     "typing-extensions",
-    "toolbox_utils >= 5.0.0, < 6.0.0",
     "numpy",
     "pandas"
 ]
@@ -111,6 +110,12 @@ profile = "black"
 
 [tool.jupytext]
 formats = "ipynb,py:percent"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = [
+    "tests"
+]
 
 [tool.setuptools]
 license-files = ["LICENSE.txt"]

@@ -8,7 +8,8 @@ Tests for `hspf_reader` module.
 import sys
 
 import pandas as pd
-from toolbox_utils import tsutils
+
+from hspf_reader.toolbox_utils.src.toolbox_utils import tsutils
 
 try:
     from cStringIO import StringIO

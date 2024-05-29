@@ -13,9 +13,9 @@ from unittest import TestCase
 
 import pandas as pd
 from pandas.testing import assert_frame_equal
-from toolbox_utils import tsutils
 
 from hspf_reader.hspf_reader import hbn
+from hspf_reader.toolbox_utils.src.toolbox_utils import tsutils
 
 
 def capture(func, *args, **kwds):

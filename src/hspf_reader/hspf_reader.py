@@ -5,10 +5,13 @@ import sys as _sys
 import warnings as _warnings
 
 import pandas as pd
-from toolbox_utils import tsutils
-from toolbox_utils.readers.hbn import hbn_extract as _hbn
-from toolbox_utils.readers.plotgen import plotgen_extract as _plotgen
-from toolbox_utils.readers.wdm import wdm_extract as _wdm
+
+from hspf_reader.toolbox_utils.src.toolbox_utils import tsutils
+from hspf_reader.toolbox_utils.src.toolbox_utils.readers.hbn import hbn_extract as _hbn
+from hspf_reader.toolbox_utils.src.toolbox_utils.readers.plotgen import (
+    plotgen_extract as _plotgen,
+)
+from hspf_reader.toolbox_utils.src.toolbox_utils.readers.wdm import wdm_extract as _wdm
 
 _warnings.filterwarnings("ignore")
 
