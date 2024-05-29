@@ -1,3 +1,15 @@
+## v1.1.0 (2024-05-28)
+
+### Feat
+
+- include local copy of toolbox_utils using git submodules
+- reworked the about functions
+
+### Fix
+
+- requirements.txt to reduce vulnerabilities
+- requirements.txt to reduce vulnerabilities
+
 ## v1.0.7 (2024-03-31)
 
 ## v1.0.6 (2023-12-16)
