@@ -14,9 +14,18 @@ readme = "README.rst"
 description = "Command line script and Python library to read HSPF WDM, binary, and plotgen time series."
 dependencies = [
     "cltoolbox >= 2.0.0, < 3.0.0",
-    "typing-extensions",
+    "dateparser",
     "numpy",
-    "pandas"
+    "numpy",
+    "pandas",
+    "pandas[excel]",
+    "pint!=0.21.*",
+    "pint<0.22; python_version < '3.9'",
+    "pint-pandas",
+    "pydantic",
+    "scipy",
+    "tabulate",
+    "typing-extensions"
 ]
 authors = [
     {name = "Tim Cera", email = "tim@cerazone.net"}
