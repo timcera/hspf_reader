@@ -1,5 +1,12 @@
 """Collection of functions for the manipulation of time series."""
 
-__all__ = ["about", "hbn", "plotgen", "wdm"]
+from .hspf_reader import hbn, plotgen, wdm
+from .toolbox_utils.src.toolbox_utils.tsutils import about as _about
 
-from .hspf_reader import about, hbn, plotgen, wdm
+
+def about():
+    """Display version number and system information."""
+    _about(__name__)
+
+
+__all__ = ["about", "hbn", "plotgen", "wdm"]
