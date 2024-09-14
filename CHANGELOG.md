@@ -1,3 +1,9 @@
+## v1.1.1 (2024-09-14)
+
+### Fix
+
+- this removes an unneeded limit on cltoolbox version
+
 ## v1.1.0 (2024-05-28)
 
 ### Feat
