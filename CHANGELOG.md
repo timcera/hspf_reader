@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 ## v2.0.1 (2024-09-14)
+=======
+## v1.1.1 (2024-09-14)
+>>>>>>> 814e9c9 (bump: version 1.1.0 → 1.1.1)
 
 ### Fix
 
 - this removes an unneeded limit on cltoolbox version
 
+<<<<<<< HEAD
 ## v2.0.0 (2024-06-01)
 
+=======
+>>>>>>> 814e9c9 (bump: version 1.1.0 → 1.1.1)
 ## v1.1.0 (2024-05-28)
 
 ### Feat
