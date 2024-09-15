@@ -1,4 +1,12 @@
 <<<<<<< HEAD
+## v2.0.2 (2024-09-15)
+
+## v1.1.1 (2024-09-14)
+
+### Fix
+
+- this removes an unneeded limit on cltoolbox version
+
 ## v2.0.1 (2024-09-14)
 =======
 ## v1.1.1 (2024-09-14)
