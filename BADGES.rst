@@ -18,11 +18,6 @@
     :target: https://pypi.python.org/pypi/hspf_reader/
     :height: 20
 
-.. image:: http://img.shields.io/pypi/dd/hspf_reader.svg
-    :alt: hspf_reader downloads
-    :target: https://pypi.python.org/pypi/hspf_reader/
-    :height: 20
-
 .. image:: https://img.shields.io/pypi/pyversions/hspf_reader
     :alt: PyPI - Python Version
     :target: https://pypi.org/project/hspf_reader/
