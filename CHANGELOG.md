@@ -1,4 +1,11 @@
 <<<<<<< HEAD
+## v2.0.3 (2026-03-06)
+
+### Fix
+
+- update to work with the latest toolbox_utils
+- update toolbox_utils to support offset codes in different pandas versions, misc
+
 ## v2.0.2 (2024-09-15)
 
 ## v1.1.1 (2024-09-14)
