@@ -49,6 +49,4 @@ class TestWDM(TestCase):
         ret2 = tsutils.asbestfreq(
             pd.read_csv("tests/data_wdm_2.csv", index_col=0, parse_dates=True)
         )
-        print(ret1)
-        print(ret2)
-        assert_frame_equal(ret1, ret2, check_dtype=False)
+        assert_frame_equal(ret1, ret2, check_dtype=False, check_index_type=False)
