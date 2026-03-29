@@ -7,7 +7,6 @@ Tests for `hspf_reader plotgen` module.
 
 import shlex
 import subprocess
-import sys
 from unittest import TestCase
 
 from pandas.testing import assert_frame_equal
@@ -22,17 +21,6 @@ except ImportError:
 import pandas as pd
 
 from hspf_reader.hspf_reader import plotgen
-
-
-def capture(func, *args, **kwds):
-    sys.stdout = StringIO()  # capture output
-    out = func(*args, **kwds)
-    out = sys.stdout.getvalue()  # release output
-    try:
-        out = bytes(out, "utf-8")
-    except Exception:
-        pass
-    return out
 
 
 class TestDescribe(TestCase):

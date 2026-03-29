@@ -272,11 +272,26 @@ def wdm(*wdmpath, **kwds):
 
 def main():
     """Set debug, register *_cli functions, and run cltoolbox.main function."""
+    from argparse import RawTextHelpFormatter
+
     import cltoolbox
-    from cltoolbox.rst_text_formatter import RSTHelpFormatter
 
     if not _os_path.exists("debug_hspf_reader"):
         _sys.tracebacklimit = 0
+
+    tablefmt_docstring = (
+        r"""[optional, default is 'cvs_nos']
+
+The table format.  Can be one of 'csv', 'tsv', 'csv_nos', 'tsv_nos',
+'plain', 'simple', 'github', 'grid', 'fancy_grid', 'pipe', 'orgtbl',
+'jira', 'presto', 'psql', 'rst', 'mediawiki', 'moinmoin', 'youtrack',
+'html', 'latex', 'latex_raw', 'latex_booktabs' and 'textile'.""",
+    )
+    float_format_docstring = (
+        r"""[optional, default is 'g']
+
+The format for floating point numbers in the output table.""",
+    )
 
     @cltoolbox.command("about")
     def _about_cli():
@@ -285,7 +300,9 @@ def main():
         for key in about_dict:
             print(f"{key}: {about_dict[key]}")
 
-    @cltoolbox.command("hbn", formatter_class=RSTHelpFormatter)
+    @cltoolbox.command("hbn", formatter_class=RawTextHelpFormatter)
+    @cltoolbox.arg("tablefmt", help=tablefmt_docstring)
+    @cltoolbox.arg("float_format", help=float_format_docstring)
     @tsutils.copy_doc(hbn)
     def _hbn_cli(
         hbnpath,
@@ -293,9 +310,10 @@ def main():
         start_date=None,
         end_date=None,
         sort_columns=False,
+        tablefmt="csv_nos",
+        float_format="g",
         *labels,
     ):
-        """docstring replaced by tsutils.copy_doc"""
         tsutils.printiso(
             hbn(
                 hbnpath,
@@ -304,22 +322,40 @@ def main():
                 start_date=start_date,
                 end_date=end_date,
                 sort_columns=sort_columns,
-            )
+            ),
+            tablefmt=tablefmt,
+            float_format=float_format,
         )
 
-    @cltoolbox.command("plotgen", formatter_class=RSTHelpFormatter)
+    @cltoolbox.command("plotgen", formatter_class=RawTextHelpFormatter)
+    @cltoolbox.arg("tablefmt", help=tablefmt_docstring)
+    @cltoolbox.arg("float_format", help=float_format_docstring)
     @tsutils.copy_doc(plotgen)
-    def _plotgen_cli(start_date=None, end_date=None, *plotgen_args):
-        """docstring replaced by tsutils.copy_doc"""
+    def _plotgen_cli(
+        start_date=None,
+        end_date=None,
+        tablefmt="csv_nos",
+        float_format="g",
+        *plotgen_args,
+    ):
         tsutils.printiso(
-            plotgen(*plotgen_args, start_date=start_date, end_date=end_date)
+            plotgen(*plotgen_args, start_date=start_date, end_date=end_date),
+            tablefmt=tablefmt,
+            float_format=float_format,
         )
 
-    @cltoolbox.command("wdm", formatter_class=RSTHelpFormatter)
+    @cltoolbox.command("wdm", formatter_class=RawTextHelpFormatter)
+    @cltoolbox.arg("tablefmt", help=tablefmt_docstring)
+    @cltoolbox.arg("float_format", help=float_format_docstring)
     @tsutils.copy_doc(wdm)
-    def _wdm_cli(start_date=None, end_date=None, *wdmpath):
-        """docstring replaced by tsutils.copy_doc"""
-        tsutils.printiso(wdm(*wdmpath, start_date=start_date, end_date=end_date))
+    def _wdm_cli(
+        start_date=None, end_date=None, tablefmt="csv_nos", float_format="g", *wdmpath
+    ):
+        tsutils.printiso(
+            wdm(*wdmpath, start_date=start_date, end_date=end_date),
+            tablefmt=tablefmt,
+            float_format=float_format,
+        )
 
     cltoolbox.main()
 
