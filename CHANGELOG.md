@@ -1,4 +1,10 @@
 <<<<<<< HEAD
+## v2.1.1 (2026-03-31)
+
+### Fix
+
+- fixed docstring format so that --help will work
+
 ## v2.1.0 (2026-03-29)
 
 ### Feat
