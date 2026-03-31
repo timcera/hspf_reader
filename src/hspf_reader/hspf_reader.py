@@ -23,21 +23,20 @@ def about():
 
 @tsutils.doc(tsutils.docstrings)
 def hbn(hbnpath, interval, *labels, **kwds):
-    r"""Prints out data to the screen from a HSPF binary output file.
+    r"""
+    Prints out data to the screen from a HSPF binary output file.
 
     Parameters
     ----------
     hbnpath : str
         The HSPF binary output file.  This file must have been created from
         a completed model run.
-
     interval : str
         One of 'yearly', 'monthly', 'daily', or 'bivl'.  The 'bivl' option
         is a sub-daily interval defined in the UCI file.  Typically 'bivl'
         is used for hourly output, but can be set to any value that evenly
         divides into a day and needs to match the BIVL setting in the model
         run.
-
     labels : str
         The remaining arguments uniquely identify a time-series in the
         binary file.  The format is
@@ -106,9 +105,7 @@ def hbn(hbnpath, interval, *labels, **kwds):
         +------------------+-------------------------+
 
     ${start_date}
-
     ${end_date}
-
     sort_columns:
         [optional, default is False]
 
@@ -164,13 +161,9 @@ def plotgen(*plotgen_args, **kwds):
             `file.plt` can be space separated sets of 'plotgenpath,field'.
 
             'file.plt,FIELD1 file2.plt,FIELD2 file.plt,FIELD3'
-
     ${start_date}
-
     ${end_date}
-
     """
-
     try:
         start_date = kwds.pop("start_date")
     except KeyError:
@@ -212,7 +205,8 @@ def plotgen(*plotgen_args, **kwds):
 
 @tsutils.doc(tsutils.docstrings)
 def wdm(*wdmpath, **kwds):
-    """Print out DSN data to the screen with ISO-8601 dates.
+    """
+    Extract DSN data from the WDM file.
 
     Parameters
     ----------
@@ -227,13 +221,9 @@ def wdm(*wdmpath, **kwds):
             `wdmpath` can be space separated sets of 'wdmpath,dsn'.
 
             'file.wdm,101 file2.wdm,104 file.wdm,227'
-
     ${start_date}
-
     ${end_date}
-
     """
-
     try:
         start_date = kwds.pop("start_date")
     except KeyError:
@@ -279,19 +269,15 @@ def main():
     if not _os_path.exists("debug_hspf_reader"):
         _sys.tracebacklimit = 0
 
-    tablefmt_docstring = (
-        r"""[optional, default is 'cvs_nos']
+    tablefmt_docstring = r"""[optional, default is 'cvs_nos']
 
 The table format.  Can be one of 'csv', 'tsv', 'csv_nos', 'tsv_nos',
 'plain', 'simple', 'github', 'grid', 'fancy_grid', 'pipe', 'orgtbl',
 'jira', 'presto', 'psql', 'rst', 'mediawiki', 'moinmoin', 'youtrack',
-'html', 'latex', 'latex_raw', 'latex_booktabs' and 'textile'.""",
-    )
-    float_format_docstring = (
-        r"""[optional, default is 'g']
+'html', 'latex', 'latex_raw', 'latex_booktabs' and 'textile'."""
+    float_format_docstring = r"""[optional, default is 'g']
 
-The format for floating point numbers in the output table.""",
-    )
+The format for floating point numbers in the output table."""
 
     @cltoolbox.command("about")
     def _about_cli():
