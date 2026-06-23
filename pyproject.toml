@@ -67,6 +67,7 @@ documentation = "https://timcera.bitbucket.io/hspf_reader/docs/index.html#hspf_r
 github = "https://github.com/timcera/hspf_reader"
 
 [tool.commitizen]
+multiline = true
 name = "cz_conventional_commits"
 tag_format = "v$version"
 update_changelog_on_bump = true
@@ -77,10 +78,26 @@ version_files = ["VERSION"]
 profile = "black"
 
 [tool.jupytext]
-formats = "ipynb,py:percent"
+formats = "auto:percent"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+exclude = [
+    "src/*/toolbox_utils/**/*.py"
+]
+fix = true
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.ruff.lint.isort.import-heading]
+first-party = "First party imports"
+future = "Future imports"
+local-folder = "Local folder imports"
+standard-library = "Standard library imports"
+third-party = "Third party imports"
 
 [tool.setuptools]
 include-package-data = true
